@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>practicePHP</title>
+    <link rel="stylesheet" href="php.css">
     <!-- w3-css -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- CSS only -->
@@ -13,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 <body>
- <div class="container">
+ <div class="container w3-card" width = "50px">
     <div class="row">
         <div class= "col-sm-3">
           <form action="index.php" method="post">
@@ -35,11 +36,17 @@
               <input type="phonenumber" class="form-control" name = "phonenumber" required>
 
               <label><b>Password</b></label>
-              <input type="password" class="form-control" name = "password" required>
+              <input type="password" class="form-control" name = "password" aria-describedby="passwordHelpBlock" required>
+              <div id="passwordHelpBlock" class="form-text">
+              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+             </div>
+              
               
               <hr class="mb-3">
 
               <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+              <br>
+              <br>
           </form>
        </div>
     </div>
