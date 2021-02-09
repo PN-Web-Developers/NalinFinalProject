@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>practicePHP</title>
-    <link rel="stylesheet" href="php.css">
+    <script src="index.js"></script>
     <!-- w3-css -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- JavaScript Bundle with Pogit pper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 <body>
- <div class="container w3-card" width = "50px">
+ <div class="container">
     <div class="row">
         <div class= "col-sm-3">
           <form action="index.php" method="post">
@@ -24,19 +28,20 @@
               <hr class="mb-3">
 
               <label><b>First Name</b></label>
-              <input type="firstname" class="form-control" name="firstname" required>
+              <input type="firstname" class="form-control" name="firstname" id ="firstname" required>
 
               <label><b>Last Name</b></label>
-              <input type="lastname" class="form-control" name = "lastname" required>
+              <input type="lastname" class="form-control" name = "lastname" id ="lastname" required>
 
               <label><b>Email Address</b></label>
-              <input type="email" class="form-control" name = "email" required>
+            
+              <input type="email" class="form-control" name = "email" id ="email" required>
 
               <label><b>Phonenumber</b></label>
-              <input type="phonenumber" class="form-control" name = "phonenumber" required>
+              <input type="phonenumber" class="form-control" name = "phonenumber" id ="pnumber" required>
 
               <label><b>Password</b></label>
-              <input type="password" class="form-control" name = "password" aria-describedby="passwordHelpBlock" required>
+              <input type="password" class="form-control" name = "password" aria-describedby="passwordHelpBlock" id ="pass" required>
               <div id="passwordHelpBlock" class="form-text">
               Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
              </div>
@@ -52,7 +57,7 @@
     </div>
  </div>
 
-    <?php
+  <?php
     
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
@@ -66,14 +71,14 @@
     $dbname = "useraccounts";
 
     //conditions where phonenumber validation
-    if(isset($_POST['phonenumber'])){
-      if (is_numeric($pnumber)) {
-        echo 'The number you entered is ' . $pnumber. '. This is a valid number.';
-        }
-        else {
-        echo 'Error: You did not enter numbers only. Please enter only numbers.';
-        }
-    }
+    // if(isset($_POST['phonenumber'])){
+    //   if (is_numeric($pnumber)) {
+    //     echo 'The number you entered is ' . $pnumber. '. This is a valid number.';
+    //     }
+    //     else {
+    //     echo 'Error: You did not enter numbers only. Please enter only numbers.';
+    //     }
+    // }
 
     //Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -87,14 +92,14 @@
     $sql = "INSERT INTO users(firstname, lastname, email, phonenumber, user_pass)
     VALUES ('$fname', '$lname' , '$email', '$pnumber','$pass')";
 
-    // sql to delete a record
-    $sql = "DELETE FROM users WHERE id=1";
+    // // sql to delete a record
+    // $sql = "DELETE FROM users WHERE id=1";
 
-    if (mysqli_query($conn, $sql)) {
-      echo "Record deleted successfully";
-    } else {
-      echo "Error deleting record: " . mysqli_error($conn);
-    }
+    // if (mysqli_query($conn, $sql)) {
+    //   echo "Record deleted successfully";
+    // } else {
+    //   echo "Error deleting record: " . mysqli_error($conn);
+    // }
 
     //check if data insert to database successfully
     if ($conn->query($sql) === TRUE) {
@@ -105,7 +110,7 @@
 
     $conn->close();
 
-    ?>
+  ?>
 
 <!-- <form  action="registration.php" method = "post">
     <div class="container">
